@@ -5,16 +5,19 @@
     - [Error](#error)
     - [Command](#command)
     - [Function](#function)
+    - [Lambda function](#lambda-function)
     - [File I/O](#file-io)
     - [Class](#class)
-    - [Lambda function](#lambda-function)
     - [Class/Object](#classobject)
     - [Inheritance](#inheritance)
     - [Iterators](#iterators)
     - [Scope](#scope)
     - [Modules](#modules)
     - [Json](#json)
+    - [venv - virtual environment](#venv---virtual-environment)
     - [Mongodb](#mongodb)
+    - [Package](#package)
+    - [Flask](#flask)
 
 
 ### Variable
@@ -105,6 +108,62 @@ while true:
 def func1():
     ...
 ```
+* assign func to variable
+```py
+def mynum(x):
+    return x+1
+num = mynum
+print(num(1))
+```
+* pass func as argument
+```py
+def mynum(a):
+    return a+1
+def addnum(b):
+    newnum = 25
+    return b(newnum)
+print(addnum(mynum))
+```
+* varArgs parameter
+```py
+def total_number(a = 1, *numbers, **phonebook):
+    print("a = ", a)
+    for num in numbers:
+        print("num:", num)
+    for name, phone_number in phonebook.item():
+        print(name, phone_number)
+
+total_number(1, 1, 2, 3, vd = 123, mg = 456)
+```
+* decorators
+```py
+def my_decorator(function):
+    def warpper():
+        myfunc = function()
+        convert_uppercase = myfunc.upper()
+        return convert_uppercase
+    return warpper
+def say_hello():
+    return "hello"
+
+decorate = my_decorator(say_hello)
+print(decorate)
+```
+
+### Lambda function
+* là một hàm ẩn danh nhỏ
+* Syntax    `lambda arguments : expression`
+* expression được thực thi và kết quả được trả về
+```py
+# ex1
+x = lambda a, b : a * b
+print(x(5, 6))              # -> 30 (=5*6)
+# ex2
+def myfunc(n):
+    return lambda a : a * n
+mydoubler = myfunc(2)
+print(mydoubler(11))        # 22
+```
 
 ### File I/O
 ```py
@@ -133,20 +192,6 @@ s1.age = 10
 print(s1.grade())
 ```
 
-### Lambda function
-* là một hàm ẩn danh nhỏ
-* Syntax    `lambda arguments : expression`
-* expression được thực thi và kết quả được trả về
-```py
-# ex1
-x = lambda a, b : a * b
-print(x(5, 6))              # -> 30 (=5*6)
-# ex2
-def myfunc(n):
-    return lambda a : a * n
-mydoubler = myfunc(2)
-print(mydoubler(11))        # 22
-```
 
 ### Class/Object
 ```py
@@ -223,5 +268,15 @@ x = {
 y = json.dumps(x)           # y is json string
 
 ```
+### venv - virtual environment
+
+
 ### Mongodb 
 [let's go](./mongodb.md)
+
+### Package
+* folder demo for package
+
+### Flask
+* folder demo for flask
+

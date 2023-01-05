@@ -1,5 +1,13 @@
 import pymongo
 
-myclient = pymongo.MongoClient('mongodb://localhost:27017/')
+myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+mydb = myclient["test"]
+mycol = mydb["customers"]
 
-print(myclient.list_database_names())
+mylist = [
+    { "name": "Amy", "address": "Apple st 652"},
+    { "name": "Hannah", "address": "Mountain 21"},
+    { "name": "Viola", "address": "Sideway 1633"}
+]
+x = mycol.insert_many(mylist)
+print(x.inserted_ids)
